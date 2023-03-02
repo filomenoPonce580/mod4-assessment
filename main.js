@@ -79,27 +79,31 @@ function calculateTotal(cart) {
 
 
 function printReceipt(cart) {
-    //create receipt string and total
-    let receipt = '';
-    let total = 0;
+    //guard clause, if empty, null
+    if(Object.keys(cart).length === 0){
+        return null
     
-    //if empty, null
-    if(!cart){
-      return null
+    //if object has values
     }else{
-      //loop through cart
-      for(let items in cart){
-        //add quantity and items to receipt string
-          receipt+=`${cart[items].quantity}x${cart[items]} - $${((cart[items].priceInCents)/100).toFixed(2)}\n`;
-        //multiply quantities by price and add to total
-          total+=((cart[items].quantity * cart[items].priceInCents)/100)
-      }
+        //create receipt string and total
+        let receipt = '';
+        let total = 0;
+
+        //loop, for every key(items) in cart
+        for(let items in cart){
+            //create variable for price and quantity for legibility
+            let quantity = cart[items].quantity;
+            let price = cart[items].priceInCents;
+            //add to string using template literals and values within cart object
+            receipt+=`${quantity}x${items} - $${((price)/100).toFixed(2)}\n`;
+            //multiply quantity&price. divide by 100 for dollar amount
+            total+=((quantity * price)/100);
+        }
+
+        //add final total line to end of string and return
+        receipt += `Total: $${total.toFixed(2)}`;
+        return receipt
     }
-  
-  //add total to receipt
-    receipt += `Total: $${total.toFixed(2)}`;
-  //return
-    return receipt
 }
 
 module.exports = {
