@@ -95,7 +95,7 @@ function printReceipt(cart) {
             let quantity = cart[items].quantity;
             let price = cart[items].priceInCents;
             //add to string using template literals and values within cart object
-            receipt+=`${quantity}x${items} - $${((price)/100).toFixed(2)}\n`;
+            receipt+=`${quantity}x${items} - $${((quantity * price)/100).toFixed(2)}\n`;
             //multiply quantity&price. divide by 100 for dollar amount
             total+=((quantity * price)/100);
         }
