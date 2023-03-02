@@ -38,7 +38,28 @@ function chooseItemByNameAndSize(products, name, size) {
   return null
 }
 
-function addProductToCart(product, cart) {}
+
+
+//create function with default cart obj.
+function addProductToCart(product, cart ={}){
+    //destructure product
+    const {name, priceInCents, availableSizes} = product
+
+    //if statement. if product is in cart. +1 quantity
+    if(cart[name] !== undefined){
+        cart[name].quantity+=1
+    }else{
+    //else, create product object in cart wwith destructured data
+        cart[name] = {
+            priceInCents: priceInCents,
+            quantity: 1
+        }
+    }
+    //desired output 
+    return cart
+}
+
+
 
 function calculateTotal(cart) {}
 
