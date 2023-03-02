@@ -19,11 +19,15 @@ function printablePrice(priceInCents) {
 
 function chooseItemByNameAndSize(products, name, size) {}
 
-function addProductToCart() {}
+function addProductToCart(product, cart) {}
 
-function calculateTotal() {}
+function calculateTotal(cart) {}
 
-function printReceipt() {}
+function printReceipt(cart) {
+  if(!cart){
+    return null
+  }
+}
 
 module.exports = {
   chooseItemByNameAndSize,
