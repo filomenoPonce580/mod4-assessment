@@ -61,7 +61,22 @@ function addProductToCart(product, cart ={}){
 
 
 
-function calculateTotal(cart) {}
+function calculateTotal(cart) {
+    //create total value
+    let value = 0;
+
+    //loop through cart object using for/in
+    for(let item in cart){
+        //multiply price by quantity of each item in cart. add to value
+        value+=(cart[item].priceInCents * cart[item].quantity)
+    }
+
+    //return value
+    return value
+}
+
+
+
 
 function printReceipt(cart) {
   if(!cart){
