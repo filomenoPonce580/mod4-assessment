@@ -17,7 +17,26 @@ function printablePrice(priceInCents) {
   return `$${amount}`;
 }
 
-function chooseItemByNameAndSize(products, name, size) {}
+function chooseItemByNameAndSize(products, name, size) {
+  //guard clause
+  if(!products || !name || !size){
+    return null
+  }
+  
+  //iterate through products
+  for(let i = 0; i < products.length; i++){
+    //match name with product.name
+    let currentProduct = products[i];
+    if(currentProduct.name===name){
+      //if name matches, check for desired size
+      if(currentProduct.availableSizes.includes(size)){
+        return currentProduct
+      }
+    }
+  }
+  //nothing satisfied? null
+  return null
+}
 
 function addProductToCart(product, cart) {}
 
