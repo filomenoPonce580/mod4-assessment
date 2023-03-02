@@ -79,9 +79,27 @@ function calculateTotal(cart) {
 
 
 function printReceipt(cart) {
-  if(!cart){
-    return null
-  }
+    //create receipt string and total
+    let receipt = '';
+    let total = 0;
+    
+    //if empty, null
+    if(!cart){
+      return null
+    }else{
+      //loop through cart
+      for(let items in cart){
+        //add quantity and items to receipt string
+          receipt+=`${cart[items].quantity}x${cart[items]} - $${((cart[items].priceInCents)/100).toFixed(2)}\n`;
+        //multiply quantities by price and add to total
+          total+=((cart[items].quantity * cart[items].priceInCents)/100)
+      }
+    }
+  
+  //add total to receipt
+    receipt += `Total: $${total.toFixed(2)}`;
+  //return
+    return receipt
 }
 
 module.exports = {
